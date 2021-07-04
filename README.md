@@ -1,1 +1,1 @@
-# Volleyball-2D-R-D
+# This is an R&D project trying to replicate the famous Bloppy Volly game.
