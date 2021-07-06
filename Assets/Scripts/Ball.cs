@@ -51,13 +51,12 @@ public class Ball : MonoBehaviour
         }
         else if (other.gameObject.tag == "Net")
         {
-           // Vector2 bounceDir = other.gameObject.transform.position - gameObject.transform.position;
+            Vector2 bounceDir = other.gameObject.transform.position - gameObject.transform.position;
             Vector2 shootForce;
-            // Debug.Log(bounceDir);
-            // bounceDir.Normalize();
+          
+            bounceDir.Normalize();
             direction.Normalize();
-            // shootForce = bounceDir * 100f;
-            shootForce = direction * 100f;
+            shootForce = bounceDir * 100f;
             transform.gameObject.GetComponent<Rigidbody2D>().AddForce(shootForce);
             Debug.Log("Net bounce: " + shootForce);
         }
@@ -80,11 +79,13 @@ public class Ball : MonoBehaviour
         GameManager.instance.DestroyBall();
         whichSide = 1;
         GameManager.instance.Score(whichSide);
+        Debug.Log("Player Scored");
     }
     void OpponentScored()
     {
         GameManager.instance.DestroyBall();
         whichSide = 2;
         GameManager.instance.Score(whichSide);
+        Debug.Log("Opponent Scored");
     }
 }

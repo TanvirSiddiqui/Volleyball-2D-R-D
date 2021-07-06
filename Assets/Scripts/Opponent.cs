@@ -51,17 +51,21 @@ public class Opponent : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log("AI colliding with "+other.gameObject.tag);
-		Vector2 bounceDir = other.gameObject.transform.position - gameObject.transform.position;
-		Vector2 shootForce;
-		Debug.Log(bounceDir);
-		bounceDir.Normalize();
-		shootForce = bounceDir * 100f;
-		other.gameObject.GetComponent<Rigidbody2D>().AddForce(shootForce);
+        if (other.gameObject.tag == "Ball")
+        {
+			int randomX = -2;  //UnityEngine.Random.Range(-1, -3);
+			int randomY = UnityEngine.Random.Range(2, 6);
+			Vector2 bounceDir = new Vector2(randomX, randomY);        //other.gameObject.transform.position - gameObject.transform.position;
+			Vector2 shootForce;
+			Debug.Log(bounceDir);
+			bounceDir.Normalize();
+			shootForce = bounceDir * 400f;
+			other.gameObject.GetComponent<Rigidbody2D>().AddForce(shootForce);
+			Debug.Log("AI Shooting Ball: " + "(" + randomX + "," + randomY + ")");
+		}
 		if (other.gameObject.tag == "OpponentSide" && preventDoubleJump)
 		{
 			StartCoroutine(jumpActivation());
-			Debug.Log("OpponentSide");
 		}
 
 	}

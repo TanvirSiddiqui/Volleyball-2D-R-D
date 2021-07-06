@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         {
             ballClone = Instantiate(ball, opponentSideBallPosition, Quaternion.identity);
         }
-        Debug.Log("new round start at: " + whichSide);
 
         ResetPositions();
     }

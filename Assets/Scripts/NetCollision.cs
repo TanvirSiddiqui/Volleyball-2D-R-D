@@ -10,7 +10,7 @@ public class NetCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball")
         {
-            Vector2 bounceDir = other.gameObject.transform.position - gameObject.transform.position;
+            Vector2 bounceDir = other.gameObject.transform.position; //- gameObject.transform.position;
             Vector2 shootForce;
             Debug.Log(bounceDir);
             bounceDir.Normalize();
